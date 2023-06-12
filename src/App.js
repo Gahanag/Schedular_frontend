@@ -16,13 +16,15 @@ const App = () => {
   const [view, setView] = useState('');
   const [timetableData, setTimetableData] = useState([]); // Placeholder for timetable data
   const [gradesData, setGradesData] = useState([]); // Placeholder for grades data
-  const Backend_URL = "http://localhost:5000"
+  const Backend_URL = "https://schedular-zf6u.onrender.com"
 
   const handleLogin = async (username,password,setError) => {
   
 
     try {
-      const response = await axios.post(`${Backend_URL}/login`, { username, password });
+      const loginURL=`${Backend_URL}/login`
+      console.log(loginURL)
+      const response = await axios.post(loginURL, { username, password });
       console.log(response.data); // Display success message or perform any desired action on successful login
       setUser(response.data.user)
       setLoggedIn(true)
